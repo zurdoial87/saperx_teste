@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 14-Mar-2023 às 13:46
+-- Tempo de geração: 14-Mar-2023 às 14:02
 -- Versão do servidor: 10.4.22-MariaDB
 -- versão do PHP: 7.4.27
 
@@ -46,31 +46,6 @@ CREATE TABLE `agendas` (
 INSERT INTO `agendas` (`id`, `nome`, `email`, `data_nascimento`, `cpf`, `telefone1`, `telefone2`, `created_at`, `updated_at`) VALUES
 (1, 'Samia Update', 'samia@teste.com', '1988-02-26', '860.038.010-00', '22222222222', NULL, '2023-03-14 05:45:15', '2023-03-14 06:06:21'),
 (4, 'teste', 'teste@teste.com', '1987-12-14', '2342342344', '23423423424', NULL, '2023-03-14 15:18:24', '2023-03-14 15:18:24');
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `contacts`
---
-
-CREATE TABLE `contacts` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `nome` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `numero` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `user_id` bigint(20) UNSIGNED NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Extraindo dados da tabela `contacts`
---
-
-INSERT INTO `contacts` (`id`, `nome`, `numero`, `user_id`, `created_at`, `updated_at`) VALUES
-(1, 'Contato 1 update', '11111111133', 1, '2023-02-02 05:13:36', '2023-02-02 06:26:01'),
-(3, 'Contato 2 up', '22222222222', 1, '2023-02-02 06:28:33', '2023-02-02 13:54:38'),
-(4, 'Contato 3', '3333333333', 1, '2023-02-02 13:51:09', '2023-02-02 13:51:09'),
-(5, 'Contato 4 update', '444444444411', 1, '2023-02-02 13:52:18', '2023-02-02 13:52:46');
 
 -- --------------------------------------------------------
 
@@ -160,14 +135,6 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Extraindo dados da tabela `users`
---
-
-INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Ismel Araujo', 'ismel@gmail.com', NULL, NULL, NULL, '2023-02-02 01:08:55', '2023-02-02 05:07:12'),
-(3, 'teste', 'teste@gmail.com', NULL, NULL, NULL, '2023-02-02 03:11:39', '2023-02-02 03:11:39');
-
---
 -- Índices para tabelas despejadas
 --
 
@@ -177,13 +144,6 @@ INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `re
 ALTER TABLE `agendas`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `agendas_email_unique` (`email`);
-
---
--- Índices para tabela `contacts`
---
-ALTER TABLE `contacts`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `contacts_user_id_foreign` (`user_id`);
 
 --
 -- Índices para tabela `failed_jobs`
@@ -230,12 +190,6 @@ ALTER TABLE `agendas`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT de tabela `contacts`
---
-ALTER TABLE `contacts`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
 -- AUTO_INCREMENT de tabela `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
@@ -258,16 +212,6 @@ ALTER TABLE `personal_access_tokens`
 --
 ALTER TABLE `users`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- Restrições para despejos de tabelas
---
-
---
--- Limitadores para a tabela `contacts`
---
-ALTER TABLE `contacts`
-  ADD CONSTRAINT `contacts_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
